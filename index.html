@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Plusval en Todo RD – Feria Inmobiliaria. Aprende a invertir de forma segura en bienes raíces. Sábado 25, 3:00 PM, Cabanna Restaurant.">
+  <title>Plusval en Todo RD – Feria Inmobiliaria</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="wrapper">
+
+  <div class="grid">
+
+    <!-- ===== COLUMNA IZQUIERDA ===== -->
+    <aside class="col-left">
+
+      <div class="logo-wrap">
+        <img src="assets/Logo-Plusvalpng.png" alt="Plusval En Todo RD" class="logo-img">
+      </div>
+
+      <form id="registroForm" class="form" novalidate>
+
+        <div class="field" id="wrap-nombre">
+          <label for="nombre">NOMBRE</label>
+          <input type="text" id="nombre" name="nombre" autocomplete="name" required>
+        </div>
+
+        <div class="field" id="wrap-telefono">
+          <label for="telefono">TEL./CEL.</label>
+          <input type="tel" id="telefono" name="telefono" autocomplete="tel" required>
+        </div>
+
+        <div class="field" id="wrap-email">
+          <label for="email">E-MAIL</label>
+          <input type="email" id="email" name="email" autocomplete="email" required>
+        </div>
+
+        <div class="field field--tall" id="wrap-fuente">
+          <label for="fuente">COMO<br>TE ENTERASTE<br>DE LA FERIA?</label>
+          <select id="fuente" name="fuente" required>
+            <option value="">Selecciona…</option>
+            <option value="Instagram">Instagram</option>
+            <option value="Facebook">Facebook</option>
+            <option value="WhatsApp">WhatsApp</option>
+            <option value="Recomendación">Recomendación</option>
+            <option value="Anuncio">Anuncio</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+
+        <label class="check-wrap" id="wrap-acepta">
+          <input type="checkbox" id="acepta" name="acepta" required>
+          <span class="check-text">Confirmo que deseo asistir a la charla y acepto ser contactado para recibir asesoría sobre inversión o compra en bienes raíces.</span>
+        </label>
+
+        <div class="cupos-chip" id="cuposChip">
+          <span class="cupos-dot"></span>
+          <span id="cuposText">Cupos limitados · máximo 100 personas</span>
+        </div>
+
+        <button type="submit" class="btn-cta" id="btnSubmit">
+          <span id="btnText">RESERVAR MI CUPO</span>
+          <span id="btnLoader" class="btn-loader" hidden>
+            <svg class="spin" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="currentColor"
+                      stroke-width="3" stroke-dasharray="31 31" stroke-linecap="round"/>
+            </svg>
+            Enviando…
+          </span>
+        </button>
+
+        <div id="formMsg" class="form-msg" role="alert" hidden></div>
+
+      </form>
+
+      <div class="location">
+        <svg class="loc-pin" viewBox="0 0 24 30" fill="none" aria-hidden="true">
+          <path d="M12 0C6.48 0 2 4.48 2 10c0 7.5 10 20 10 20S22 17.5 22 10C22 4.48 17.52 0 12 0z" fill="#1a3a1a"/>
+          <circle cx="12" cy="10" r="4" fill="#ffe100"/>
+        </svg>
+        <div class="loc-body">
+          <span class="loc-name">Cabanna Restaurant</span>
+          <div class="loc-time-wrap">
+            <span class="loc-time">3:00 PM</span>
+            <span class="loc-date">SÁBADO 25</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="legal">Al registrarte, aceptas ser contactado para asesoría en inversión inmobiliaria.</p>
+
+    </aside>
+
+    <!-- ===== COLUMNA DERECHA ===== -->
+    <main class="col-right">
+
+      <h1 class="headline">APRENDE A iNVERTiR<br>DE FORMA SEGURA<br>EN BiENES RAíCES.</h1>
+      <p class="subheadline">EVITA LOS RIESGOS QUE FRENAN A LA MAYORÍA.</p>
+
+      <!-- Bloque central: speakers + copy debajo, centrado -->
+      <div class="center-block">
+
+        <div class="speakers">
+          <p class="sp-label sp-label--left">THE MONEY<br>COACH</p>
+
+          <div class="sp-circles">
+            <div class="sp-circle sp-circle--l">
+              <img src="assets/MC.png" alt="The Money Coach" class="sp-img">
+            </div>
+            <div class="sp-circle sp-circle--r">
+              <img src="assets/hamid.png" alt="Hamid Yarjura" class="sp-img">
+            </div>
+          </div>
+
+          <p class="sp-label sp-label--right">HAMID<br>YARJURA</p>
+        </div>
+
+        <div class="copy">
+          <p>Esta es una oportunidad con fecha y hora. Invertir en bienes raíces suena bien… hasta que no sabes por dónde empezar. Entre malas decisiones, promesas vacías y falta de información, <strong>muchos terminan perdiendo oportunidades que pudieron cambiar su futuro financiero.</strong></p>
+          <p>De la mano de expertos en finanzas e inversión, te ayudaremos a <strong>identificar oportunidades reales</strong> y evitar los errores que frenan a la mayoría.</p>
+        </div>
+
+      </div>
+
+    </main>
+
+  </div><!-- fin grid -->
+
+
+  <!-- ===== BARRA INFERIOR ===== -->
+  <div class="bottom-section">
+    <div class="mid-bar"></div>
+    <div class="dark-bar"></div>
+
+    <div class="van-wrap">
+      <img src="assets/guagua.png" class="van-img" alt="Guagua Plusval">
+    </div>
+
+    <div class="desc-wrap">
+      <img src="assets/descuento.png" class="desc-img" alt="5% de descuento">
+    </div>
+  </div>
+
+</div><!-- fin wrapper -->
+
+<script src="script.js"></script>
+</body>
+</html>
