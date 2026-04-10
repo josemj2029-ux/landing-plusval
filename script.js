@@ -4,7 +4,7 @@
 ========================================================= */
 
 const CONFIG = {
-  SCRIPT_URL: "PEGA_AQUI_TU_URL_NUEVA_DE_GOOGLE_SCRIPT",
+  SCRIPT_URL: "https://script.google.com/macros/s/AKfycbykmrVEAKbAbW57lbd4SZdyflbSfXcAQ610W1A2t0Q958aFa9C7sO4oJ9hdZm1dHumr/exec",,
   MAX_CUPOS: 100
 };
 
