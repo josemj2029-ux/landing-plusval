@@ -4,11 +4,10 @@
 ========================================================= */
 
 const CONFIG = {
-  SCRIPT_URL: "https://script.google.com/macros/s/AKfycbykmrVEAKbAbW57lbd4SZdyflbSfXcAQ610W1A2t0Q958aFa9C7sO4oJ9hdZm1dHumr/exec",
+  SCRIPT_URL: "PEGA_AQUI_TU_URL_NUEVA_DE_GOOGLE_SCRIPT",
   MAX_CUPOS: 100
 };
 
-/* ===== REFERENCIAS ===== */
 const form = document.getElementById('registroForm');
 const btnSubmit = document.getElementById('btnSubmit');
 const btnText = document.getElementById('btnText');
@@ -16,10 +15,8 @@ const btnLoader = document.getElementById('btnLoader');
 const formMsg = document.getElementById('formMsg');
 const cuposText = document.getElementById('cuposText');
 
-/* ===== ESTADO ===== */
-let cuposOcupados = 27; // puedes cambiarlo manualmente
+let cuposOcupados = 27;
 
-/* ===== MOSTRAR CUPOS ===== */
 function actualizarCupos() {
   if (cuposText) {
     const disponibles = CONFIG.MAX_CUPOS - cuposOcupados;
@@ -27,7 +24,6 @@ function actualizarCupos() {
   }
 }
 
-/* ===== MENSAJE ===== */
 function mostrarMensaje(texto, tipo = "success") {
   if (!formMsg) {
     alert(texto);
@@ -39,57 +35,54 @@ function mostrarMensaje(texto, tipo = "success") {
   formMsg.className = `form-msg ${tipo}`;
 }
 
-/* ===== ENVIAR FORMULARIO ===== */
-form.addEventListener("submit", function (e) {
-  e.preventDefault();
+if (form) {
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-  const nombre = document.getElementById("nombre").value.trim();
-  const telefono = document.getElementById("telefono").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const fuente = document.getElementById("fuente").value;
-  const acepta = document.getElementById("acepta").checked;
+    const nombre = document.getElementById("nombre").value.trim();
+    const telefono = document.getElementById("telefono").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const fuente = document.getElementById("fuente").value;
+    const acepta = document.getElementById("acepta").checked;
 
-  if (!nombre || !telefono || !email || !fuente || !acepta) {
-    mostrarMensaje("Completa todos los campos y acepta la confirmación.", "error");
-    return;
-  }
+    if (!nombre || !telefono || !email || !fuente || !acepta) {
+      mostrarMensaje("Completa todos los campos y acepta la confirmación.", "error");
+      return;
+    }
 
-  /* LOADER */
-  btnSubmit.disabled = true;
-  btnText.hidden = true;
-  btnLoader.hidden = false;
+    btnSubmit.disabled = true;
+    btnText.hidden = true;
+    btnLoader.hidden = false;
 
-  fetch(CONFIG.SCRIPT_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
+    const formData = new FormData();
+    formData.append("data", JSON.stringify({
       nombre: nombre,
       telefono: telefono,
       email: email,
-      fuente: fuente,
-      acepta: acepta
-    })
-  })
-    .then(() => {
-      mostrarMensaje("Registro enviado correctamente.");
+      fuente: fuente
+    }));
 
-      /* SUMAR CUPO */
-      cuposOcupados++;
-      actualizarCupos();
-
-      form.reset();
+    fetch(CONFIG.SCRIPT_URL, {
+      method: "POST",
+      body: formData
     })
-    .catch(() => {
-      mostrarMensaje("Error al enviar el formulario.", "error");
-    })
-    .finally(() => {
-      btnSubmit.disabled = false;
-      btnText.hidden = false;
-      btnLoader.hidden = true;
-    });
-});
+      .then(response => response.text())
+      .then(() => {
+        mostrarMensaje("Registro enviado correctamente.");
 
-/* ===== INICIO ===== */
+        cuposOcupados++;
+        actualizarCupos();
+        form.reset();
+      })
+      .catch(() => {
+        mostrarMensaje("Error al enviar el formulario.", "error");
+      })
+      .finally(() => {
+        btnSubmit.disabled = false;
+        btnText.hidden = false;
+        btnLoader.hidden = true;
+      });
+  });
+}
+
 actualizarCupos();
