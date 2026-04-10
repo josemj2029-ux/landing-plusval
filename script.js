@@ -4,7 +4,7 @@
 ========================================================= */
 
 const CONFIG = {
-  SCRIPT_URL: "https://script.google.com/macros/s/AKfycbykmrVEAKbAbW57lbd4SZdyflbSfXcAQ610W1A2t0Q958aFa9C7sO4oJ9hdZm1dHumr/exec",
+  SCRIPT_URL: "https://script.google.com/macros/s/AKfycbxtTrjLYrWP4n-4BQzXXXvc7BhoWP0nAHRFH-VZ03E70kgHqno5aI7m1rwPyOsNRvZm/exec",
   MAX_CUPOS: 100
 };
 
@@ -54,19 +54,21 @@ if (form) {
     btnText.hidden = true;
     btnLoader.hidden = false;
 
-    const formData = new FormData();
-    formData.append("data", JSON.stringify({
+    const payload = JSON.stringify({
       nombre: nombre,
       telefono: telefono,
       email: email,
       fuente: fuente
-    }));
+    });
+
+    const formData = new FormData();
+    formData.append("data", payload);
 
     fetch(CONFIG.SCRIPT_URL, {
       method: "POST",
+      mode: "no-cors",
       body: formData
     })
-      .then(response => response.text())
       .then(() => {
         mostrarMensaje("Registro enviado correctamente.");
         cuposOcupados++;
