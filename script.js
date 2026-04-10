@@ -4,7 +4,7 @@
 ========================================================= */
 
 const CONFIG = {
-  SCRIPT_URL: https://script.google.com/macros/s/AKfycbx9IBNO10zaLUIXr5fvEGhAfqKrhRa7v4VgPqxOo-f-iygzvqRhiaYcInnXeEPb9F6q/exec
+  SCRIPT_URL: "https://script.google.com/macros/s/AKfycbykmrVEAKbAbW57lbd4SZdyflbSfXcAQ610W1A2t0Q958aFa9C7sO4oJ9hdZm1dHumr/exec",
   MAX_CUPOS: 100
 };
 
@@ -69,7 +69,6 @@ if (form) {
       .then(response => response.text())
       .then(() => {
         mostrarMensaje("Registro enviado correctamente.");
-
         cuposOcupados++;
         actualizarCupos();
         form.reset();
