@@ -15,13 +15,27 @@ const btnLoader = document.getElementById('btnLoader');
 const formMsg = document.getElementById('formMsg');
 const cuposText = document.getElementById('cuposText');
 
-let cuposOcupados = 27;
+let cuposOcupados = 27; // fallback mientras carga
 
 function actualizarCupos() {
   if (cuposText) {
     const disponibles = CONFIG.MAX_CUPOS - cuposOcupados;
     cuposText.innerText = `⚡ Cupos limitados - ${disponibles} de ${CONFIG.MAX_CUPOS} disponibles`;
   }
+}
+
+function fetchCuposDesdeSheet() {
+  fetch(CONFIG.SCRIPT_URL + "?action=getCount")
+    .then(r => r.json())
+    .then(data => {
+      if (typeof data.ocupados === "number") {
+        cuposOcupados = data.ocupados;
+        actualizarCupos();
+      }
+    })
+    .catch(() => {
+      // Si falla, se mantiene el valor local
+    });
 }
 
 function mostrarMensaje(texto, tipo = "success") {
@@ -87,3 +101,4 @@ if (form) {
 }
 
 actualizarCupos();
+fetchCuposDesdeSheet();
